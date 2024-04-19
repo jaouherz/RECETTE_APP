@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+<div class="col-xl-8">
+  <app-sidebar></app-sidebar>
+
+  <div class="card mb-4">
+    <div class="card-header">Nouveau projet</div>
+    <div class="card-body">
+      <form #projectform="ngForm" (ngSubmit)="addprojects(projectform)" ngForm="projectform">
+        <div class="form-group">
+          <label>Nom du projet<span style="color: red">*</span></label>
+          <input type="text" ngModel class="form-control" placeholder=" name"name="name" >
+
+        </div>
+        <div class="form-group">
+          <label>Description<span style="color: red"></span></label>
+          <input type="text" ngModel class="form-control" placeholder="description" name="description" >
+        </div>
+
+
+        <div class="form-group">
+          <label>URL du version</label>
+          <input type="text" ngModel class="form-control" placeholder="url" name="url">
+        </div>
+        <div class="form-group">
+          <label>Domaine<span style="color: red">*</span></label>
+          <select class="form-control" name="domaine" [(ngModel)]="selecteddomain">
+            <option value="" selected disabled>--Choisir un Domaine--</option>
+            <option *ngFor="let user of domaines" [value]="user.name">{{user.name}} </option>
+          </select>
+        </div>
+
+        <hr>
+        <div class="form-group">
+          <label>DPT du version</label>
+          <input type="file" ngModel class="form-control" placeholder="file" name="dpt_id" (change)="onFileSelected($event)" >
+        </div>
+        <div class="form-group">
+          <label>Le Test unitaire du version </label>
+          <input type="file" ngModel class="form-control" placeholder="T_U" name="T_U"(change)="onFileSelected2($event)">
+        </div>
+        <hr>
+        <div class="form-group">
+          <label>Intervention nécessaire</label>
+          <input type="radio" [(ngModel)]="selectedOption" name="intervention" value="intervention" [disabled]="envi">
+        </div>
+
+        <div class="form-group">
+          <label>Environnement prêt</label>
+          <input type="radio" [(ngModel)]="selectedOption" name="intervention" value="envi" [disabled]="intervention">
+        </div>
+
+        <div *ngIf="isLoading">
+          <i class="fa fa-spinner fa-spin"></i> Chargement...
+        </div>
+
+        <button type="submit" class="btn btn-success"  >Ajouter le projet</button>
+      </form>
+    </div>
+  </div>
+</div>

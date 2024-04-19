@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="d-flex align-items-center mb-4" style="position: fixed; top: 100px; right: -160px; width: 30%;">
+  <i class="bx bx-search me-2"></i>
+  <app-sidebar></app-sidebar>
+</div>
+<div class="d-flex align-items-center mb-4" style="width: 30%; right: 50%; top: 20px;">
+  <i class="bx bx-search" style="margin-right: 10px;"></i>
+  <input type="search" (ngModelChange)="searchEmployees(key.value) " #key="ngModel" ngModel name="key" id="searchName" class="form-control mr-sm-2" style="width: 60%; max-width: 500px; margin-right: -900px; margin-top: 9%;" placeholder="Recherche des domaines..." required>
+</div>
+<div class="container" id="main-container" style="margin-right: 5%;">
+  <div class="row" style="margin-top: -7%">
+    <div class="mt-5">
+      <div *ngIf="isLoading">
+        <i class="fa fa-spinner fa-spin"></i> Loading...
+      </div>
+      <table class="table table-hover smaller-font">
+        <thead>
+        <tr>
+          <th>Nom domaine </th>
+          <th>Vis à vis étude</th>
+          <th>Vis à vis metier</th>
+          <th>Vis à vis orga</th>
+          <th>Responsable orga</th>
+          <th>Responsable metier</th>
+          <th>Responsable étude</th>
+          <th></th><th></th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr *ngFor="let domaine of domaines">
+          <td>{{domaine.name}}</td>
+          <td>{{domaine.vav_etude}}</td>
+          <td>{{domaine.vav_metier}}</td>
+          <td>{{domaine.vav_orga}}</td>
+
+          <td>{{domaine.resorga}}</td>
+          <td>{{domaine.respmetier}}</td>
+          <td>{{domaine.respEtude}}</td>
+
+         <td>
+
+
+          <a (click)="updateEmployee(domaine.id)" class="btn btn-light " data-placement="top" data-original-title="Edit"><i class="fa fa-pencil " style="color:#f3ac2c"></i> </a>
+        </td>
+
+          <td>
+            <a (click)="deleteproject(domaine.id)" class="btn btn-danger " data-placement="top" data-original-title="delete"><i class="fa fa-trash-o" style="color: #e2e2e2"></i> </a>
+
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Notification for no employees -->
+<div *ngIf="domaines?.length == 0 && !isLoading " class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO DOMAINE!</h4>
+    <p>No projects were found.</p>
+  </div>
+</div>

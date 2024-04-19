@@ -1,0 +1,35 @@
+.calendar {
+  width: 50% !important;
+  height: 50% !important;
+}
+
+.daypilot-calendar {
+  height: 50%;
+}
+.small-calendar {
+  height: 900px;
+}
+.daypilot-event {
+  border-radius: 10px;
+}
+.form-control, .dataTable-input,select,textarea {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #060607;
+
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; top:9%;
+  border-radius: 0.35rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+h3{
+
+
+  font-family: Arial, Helvetica, sans-serif;
+}

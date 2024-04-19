@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="col-xl-8">
+  <app-sidebar></app-sidebar>
+
+  <div class="card mb-4">
+    <div class="card-header">Planifier une séance pour le projet: {{project.name}} </div>
+    <div class="card-body">
+
+
+
+
+
+      <form #interventionform="ngForm" (ngSubmit)="intervention1(interventionform)" ngForm="interventionform">
+
+
+
+        <div class="form-group">
+          <label for="msg">Date et heure de début :<span style="color: red">*</span></label>
+          <input type="datetime-local" class="form-control" id="msg" ngModel name="startTime" rows="3">
+        </div>
+        <div class="form-group">
+          <label for="bg">Date et heure du fin : <span style="color: red">*</span></label>
+          <input type="datetime-local" class="form-control" id="bg" ngModel name="endTime" rows="3">
+        </div> <div class="form-group">
+        <label for="po">Poste : <span style="color: red">*</span> </label>
+        <select class="form-control" id="po" ngModel name="poste" rows="3">
+          <option value="">--Choisir un poste--</option>
+          <option value="1">Poste 1</option>
+          <option value="2">Poste 2</option>
+          <option value="4">Poste 4</option>
+          <option value="5">Poste 5</option>
+          <option value="6">Poste 6</option>
+          <option value="7">Poste 7</option>
+        </select>
+      </div>
+        <div *ngIf="isLoading">
+          <i class="fa fa-spinner fa-spin"></i> Chargement...
+        </div>
+        <button type="submit" class="btn btn-success">Ajouter la séance</button>
+      </form>
+    </div>
+  </div>
+</div>

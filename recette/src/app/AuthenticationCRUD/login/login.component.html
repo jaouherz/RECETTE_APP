@@ -1,0 +1,53 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<section>
+  <div class="form-box">
+    <div class="form-value">
+      <form #loginForm="ngForm"(ngSubmit)="login(loginForm)">
+        <div class="img"><img src="assets/LOGO-ATTIJARI-NEW.gif" width="150px"> </div>
+        <h2>RECETTE-APP</h2>
+        <h2>Connexion</h2>
+        <h5 *ngIf="!existinguser" style="color: red ;"><p style="margin-right: 50px;">Vérifiez votre e-mail ou votre mot de passe ,<br> Si vous rencontrez un problème, <br>contactez l'administrateur de sécurité </p></h5>
+        <div class="inputbox">
+
+
+          <input type="email"
+                 ngModel
+                 name="email"
+                 id="email" required >
+          <label  place>E-mail</label>
+
+          <div class="icon"> <img src="assets/mail.png" width="70px" alt="Input Icon"> </div>
+        </div>
+        <div class="inputbox">
+
+          <input type="password"
+                 ngModel
+                 name="password"
+                 id="password" required>
+          <label >Mot de passe</label>
+          <div class="icon"> <img src="assets/password.png" width="60px" alt="Input Icon"> </div>
+        </div>
+        <div class="forget">
+          <label >
+          </label>
+          <a routerLink="/forgetpass">Mot de passe oublié?</a>
+
+        </div>
+        <div *ngIf="isLoading">
+           Connexion...
+        </div>
+        <button type="submit">Connexion</button>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

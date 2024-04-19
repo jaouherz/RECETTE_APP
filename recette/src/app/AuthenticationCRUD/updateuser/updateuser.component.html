@@ -1,0 +1,37 @@
+<app-header></app-header>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<button type="button" class="btn btn-success "  style="width: 200px; height: 50px; margin-left: 70px; margin-top:30px; margin-bottom: 10px;"
+        routerLink="/register"> Back to list</button>
+<div class="main"><div class="col-md-6 col-sm-12"><div class="login-form">
+
+  <form #updateform="ngForm"(ngSubmit)="onSubmit()" >
+
+  <div class="form-group">
+    <label>First Name:</label>
+    <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname" [(ngModel)]="user.firstname">
+  </div>
+  <div class="form-group">
+    <label>Last Name:</label>
+    <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="lastname" [(ngModel)]="user.lastname">
+  </div>
+  <div class="form-group">
+    <label>Email:</label>
+    <input type="email" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="user.email">
+  </div>
+  <div class="form-group">
+    <label>Role:</label>
+    <select class="form-control" id="role" name="role" [(ngModel)]="user.role">
+      <option value="" selected>--Please choose a role--</option>
+      <option value="recette">recette</option>
+      <option value="orga">orga</option>
+      <option value="adminfn">administrateur fn</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-black">Update User</button>
+
+</form> </div>
+</div>
+</div>
+

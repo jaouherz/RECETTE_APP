@@ -1,0 +1,157 @@
+<app-header></app-header>
+<div class="d-flex align-items-center mb-4" style="position: fixed; top: 100px; right: -160px; width: 30%;">
+  <i class="bx bx-search me-2"></i>
+  <app-sidebar></app-sidebar>
+</div>
+
+<div class="d-flex align-items-center mb-4" style="width: 30%; right: 50%; top: 20px;">
+  <i class="bx bx-search" style="margin-right: 10px;"></i>
+  <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel name="key" id="searchName" class="form-control mr-sm-2" style="width: 50%; max-width: 500px; margin-right: -900px; margin-top: 9%;" placeholder="Recherche..." required>
+</div>
+
+<div class="container" id="main-container" style="margin-right: 5%;">
+
+  <div class="row" style="margin-top: -7%">
+    <div class="mt-5"> <a *ngIf="!isrecette"style="font-size: 20px;bottom: 10%;font-family : Verdana, Geneva, sans-serif;"><i class="fa fa-table-list"></i> <strong>  Liste des projets et séances </strong></a><br>
+      <a *ngIf="isrecette"style="font-size: 20px;bottom: 10%;font-family : Verdana, Geneva, sans-serif;"> <i class="fa fa-table-list"></i> <strong> Liste des projets et séances </strong></a><br><br>
+      <div *ngIf="isLoading">
+        <i class="fa fa-spinner fa-spin"></i> Loading...
+      </div>
+      <table class="table table-hover">
+        <!-- Table headers -->
+        <thead>
+        <tr>
+          <th></th>
+          <th>NOM</th>
+          <th>DOMAINE</th>
+          <th>ETAT</th>
+          <th>DATE D'AJOUT</th>
+          <th></th>
+          <th></th>
+          <th></th><th></th><th></th><th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Project rows -->
+        <ng-container *ngFor="let project of projects" >
+          <tr (click)="toggleSessions(project.id);nameproject=project.name" [ngClass]="{ 'red-row': project.etat === 'Retour recette'}" >
+
+            <td><i *ngIf="nameproject!==project.name" class="fa fa-chevron-right" style="color:#f3ac2c"></i>
+              <i *ngIf="!showSeances&&nameproject===project.name" class="fa fa-chevron-right" style="color:#f3ac2c"></i>
+              <i *ngIf="showSeances&&nameproject===project.name" class="fa fa-chevron-down" style="color:#f3ac2c"></i></td>
+            <td>
+              {{project.name}}</td>
+            <td>{{project.domaine}}</td>
+            <td>
+              <ng-container [ngSwitch]="project.etat">
+                <i *ngSwitchCase="'en attente de planification'" class="fa fa-calendar-o"></i>
+                <i *ngSwitchCase="'En attente de planification d\'une autre séance'" class="fa fa-calendar-o"></i>
+                <i *ngSwitchCase="'Recette  planifié'" class="fa fa-calendar-alt"></i>
+                <i *ngSwitchCase="'Retour recette'" class="fa fa-times"></i>
+                <i *ngSwitchCase="'En attente de feedback sur la séance '" class="fa fa-message"></i>
+                <i *ngSwitchCase="'en cours de preparation de l\'environnement'" class="fa fa-wrench"></i>
+                <i *ngSwitchDefault class="fa fa-check" style="color: green"></i>
+              </ng-container>
+              {{ project.etat }}
+            </td>
+            <td>{{project.date}} à {{project.time}}</td>
+
+            <td>
+              <a *ngIf="!isrecette&&project.etat=='en attente de planification'||!isrecette&&project.etat=='En attente de planification d\'une autre séance'" (click)="planifier(project.id)" class="btn btn" data-placement="top" data-original-title="Planifier votre séance">
+                <i class="fa fa-calendar-plus heart-beat2" style="color:#229a11; font-size: 20px"></i>
+              </a>
+            </td>
+            <td>
+              <a (click)="infoproject(project.id)" class="btn btn" data-placement="top" data-original-title="Info">
+                <i class="fa fa-info-circle" style="color:grey"></i>
+              </a>
+
+            </td>
+            <td>
+
+              <a *ngIf="isrecette||issuperadm" (click)="updateEmployee(project.id)" class="btn btn" data-placement="top" data-original-title="Edit">
+                <i class="fa fa-pencil" style="color:#f3ac2c"></i>
+              </a>
+
+            </td><td>
+            <a *ngIf="isrecette||issuperadm" (click)="deleteproject(project.id)" class="btn btn" data-placement="top" data-original-title="Supprimer">
+              <i class="fa fa-trash" style="color: #ad3f3f"></i>
+            </a>
+          </td><td>
+
+          </td><td>
+
+          </td>
+          </tr>
+          <!-- Session list -->
+
+            <tr *ngFor="let session of seance2; let i = index" class="seance-row"  style="background-color: rgba(105,112,122,0.07)">
+              <ng-container *ngIf="project.name === session.projectname&& seance2.length!==0&&showSeances">
+                <td></td>
+
+
+
+                <td><strong>Séance {{ counter + i + 1 }}</strong></td>
+                <td><strong>Début séance:</strong></td>
+                <td>{{ session.startTime }}</td>
+                <td><strong>Fin:</strong>{{ session.endTime }}</td>
+                <td></td>
+                <td data-placement="top" data-original-title="Edit"data-placement="top"
+                    data-original-title="Edit"
+                    title="{{session.cause}}" >
+                  <ng-container [ngSwitch]="session.statut">
+                    <i *ngSwitchCase="'OK'" class="fa fa-check " style="color: green"></i>
+                    <i *ngSwitchCase="'KO'" class="fa fa-times" style="color: red"></i>
+                    <i *ngSwitchCase="'Pas encore effectueé'" class="fa fa-times"></i>
+                    <i *ngSwitchDefault ></i>
+                  </ng-container>
+                  {{ session.statut }}
+                </td>
+
+
+                <td style="width: 15px">
+
+
+                  <a *ngIf="session.etats !== 'séance terminée'&&!isrecette&&issuperadm"(click)="updateseance(session.id)" class="btn btn" data-placement="top" data-original-title="delete"><i class="fa fa-pencil-square" style="color: rgb(243,172,44)"></i> </a>
+
+                </td>
+                <td >
+                  <a *ngIf="session.etats === 'séance terminée'&&!isrecette&&issuperadm&&session.statut === '-'" (click)="addfeedback(session.id)" class="btn btn" data-placement="top" data-original-title="feedback" style="margin-right: -50px;" >
+                    <i class="fa fa-comment-medical" style="color: #2c82f3;font-size: 20px;margin-right: -50px"></i>
+                  </a>
+                  <a *ngIf="session.etats === 'séance terminée'&&!isrecette&&issuperadm&&session.statut !== '-'"(click)="deletefeedback(session.id)" class="btn btn" data-placement="top" data-original-title="feedback" style="font-size: 10px;color: rgba(31,30,38,0.44)">Supprimer feedback</a>
+
+                  <a *ngIf="session.etats !== 'séance terminée'&&issuperadm&&!isrecette"(click)="deleteSeance(session.id)" class="btn btn " data-placement="top" data-original-title="delete"><i class="fa fa-trash-o" style="color: rgb(222,13,13);"></i> </a>
+                </td>
+                <td></td><td>
+
+              </td>
+              </ng-container>
+
+            </tr>
+          <tr *ngIf="project.name === nameproject && seance2.length===0&&showSeances">
+            <ng-container >
+              <td></td>
+              <td><strong>Pas de seances pour ce projet</strong></td><td></td>
+              <td><strong>Début séance:</strong>-</td>
+              <td><strong>Fin séance:</strong>-</td>
+              <td><strong>Statut:</strong>-</td>
+<td></td><td></td>
+            </ng-container>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- Notification for no employees -->
+<div *ngIf="projects?.length == 0 && !isLoading " class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO projects!</h4>
+    <p>No projects were found.</p>
+  </div>
+</div>

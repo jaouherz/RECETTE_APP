@@ -1,0 +1,33 @@
+.d-flex {
+  justify-content: flex-end;
+}
+th {
+  border-top: 1px solid rgba(0, 0, 0, 0.22);
+}
+.heart-beat {
+  width: 30%;
+}
+.heart-beat2 {
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat  {
+
+  5% {
+    transform: scale(1.1);
+  }
+
+
+
+}
+@keyframes heartbeat2  {
+
+  25% {
+    transform: scale(1.1);
+  }
+  90% {
+    transform: scale(1.1);
+  }
+
+
+}

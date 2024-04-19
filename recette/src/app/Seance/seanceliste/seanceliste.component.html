@@ -1,0 +1,86 @@
+<app-header></app-header>
+<div class="d-flex align-items-center mb-4" style="position: fixed; top: 100px; right: -160px; width: 30%;">
+  <i class="bx bx-search me-2"></i>
+  <app-sidebar></app-sidebar>
+</div>
+
+<div class="container" id="main-container" style="margin-right: 5%;">
+  <div class="row" >
+    <div class="mt-5"><a *ngIf="!isrecette"style="font-size: 20px;bottom: 10%;font-family : Verdana, Geneva, sans-serif;"><i class="fa fa-list-dots"></i><strong> Toutes mes séances </strong>  </a><br>
+      <a *ngIf="isrecette"style="font-size: 20px;bottom: 10%;font-family : Verdana, Geneva, sans-serif;"> <i class="fa fa-list-dots"></i> <strong> Liste des séances </strong></a> <br><br>
+      <div *ngIf="isLoading">
+        <i class="fa fa-spinner fa-spin"></i> Loading...
+      </div>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Nom projet </th>
+
+          <th>Début séance</th>
+          <th>Fin séance</th>
+          <th>Etat</th>
+          <th>Statut</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr *ngFor="let project of seance">
+          <td>{{project.projectname}}</td>
+
+          <td>{{project.startTime}}</td>
+          <td>{{project.endTime}}</td>
+          <td>
+            <ng-container [ngSwitch]="project.etats">
+              <i *ngSwitchCase="'séance terminée'" class="fa fa-check-circle"></i>
+              <i *ngSwitchCase="'En cours'" class="fa fa-spinner fa-spin"></i>
+              <i *ngSwitchCase="'Pas encore effectueé'" class="fa fa-times"></i>
+              <i *ngSwitchDefault class="fa fa-clock"></i>
+            </ng-container>
+            {{ project.etats }}
+          </td>
+
+
+
+          <td>
+            <ng-container [ngSwitch]="project.statut">
+              <i *ngSwitchCase="'OK'" class="fa fa-check " style="color: green"></i>
+              <i *ngSwitchCase="'KO'" class="fa fa-times" style="color: red"></i>
+              <i *ngSwitchCase="'Pas encore effectueé'" class="fa fa-times"></i>
+              <i *ngSwitchDefault ></i>
+            </ng-container>
+            {{ project.statut }}
+          </td>
+
+
+
+
+          <td style="width: 15px">
+
+
+            <a *ngIf="project.etats !== 'séance terminée'&&!isrecette"(click)="updateseance(project.id)" class="btn btn" data-placement="top" data-original-title="delete"><i class="fa fa-pencil-alt" style="color: #f3ac2c"></i> </a>
+
+          </td>
+          <td style="width: 10px">
+            <a *ngIf="project.etats === 'séance terminée'&&!isrecette&&project.statut === '-'" (click)="addfeedback(project.id)" class="btn btn" data-placement="top" data-original-title="feedback" style="margin-right: -50px;" >
+              <i class="fa fa-comment-medical" style="color: #2c82f3;font-size: 20px"></i>
+            </a><a *ngIf="project.etats !== 'séance terminée'&&!isrecette"(click)="deleteSeance(project.id)" class="btn btn " data-placement="top" data-original-title="delete"><i class="fa fa-trash" style="color: #ad3f3f"></i> </a>
+
+
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Notification for no employees -->
+<div *ngIf="seance?.length == 0 && !isLoading " class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO projects!</h4>
+    <p>No projects were found.</p>
+  </div>
+</div>
+

@@ -1,0 +1,57 @@
+<app-header></app-header><app-sidebar></app-sidebar>
+<div class="d-flex align-items-center mb-4" style="width: 30%; right: 50%; top: 20px;">
+  <i class="bx bx-search" style="margin-right: 10px;"></i>
+  <input type="search" (ngModelChange)="searchEmployees(key.value) " #key="ngModel" ngModel name="key" id="searchName" class="form-control mr-sm-2" style="width: 50%; max-width: 500px; margin-right: -900px; margin-top: 9%;" placeholder="Recherche..." required>
+</div>
+<button type="button" class="btn btn-success "  style="width: 100px; height: 50px; margin-left: 600px; margin-top:-7%; margin-bottom: 10px;"
+        routerLink="/user"><i class="fa fa-plus" style="font-size: 20px"></i>   <strong>  Ajouter </strong></button>
+<div class="container" id="main-container">
+
+  <div class="row">
+    <div class="mt-5">
+      <a style="font-size: 20px;bottom: 10%;font-family : Verdana, Geneva, sans-serif;"> <i class="fa fa-table-list"></i> <strong> Liste des utilisateurs secondaires </strong></a><br><br>
+
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>firstname</th>
+          <th>lastname</th>
+          <th>profile</th>
+          <th>Email</th>
+          <th></th>
+          <th></th>     <th></th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr *ngFor="let user of users">
+          <td>{{user.firstname}}</td>
+          <td>{{user.lastname}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.profile}}</td>
+          <td></td>
+          <td>            <a  (click)="updateEmployee(user.id)" class="btn btn-light " data-placement="top" data-original-title="Edit"><i class="fa fa-pencil " style="color:#f3ac2c"></i> </a>
+          </td>
+          <td>
+            <a (click)="deleteuserr(user.id)" class="btn btn " data-placement="top" data-original-title="delete" style="color: #ad3f3f"><i class="fa fa-trash" ></i>
+            </a>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Notification for no employees -->
+<div *ngIf="users?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO EMPLOYEES!</h4>
+    <p>No Employees were found.</p>
+  </div>
+</div>
+
+
+
+
+

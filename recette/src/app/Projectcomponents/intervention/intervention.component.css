@@ -1,0 +1,85 @@
+body{margin-top:20px;
+  background-color:#f2f6fc;
+  color:#69707a;
+}
+.img-account-profile {
+  height: 10rem;
+}
+.rounded-circle {
+  border-radius: 50% !important;
+}
+.card {
+  box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+  margin-left: 30%;
+  margin-right: -40%;
+  width: 100%;
+  height: 60%;
+  margin-top: 10%;
+}
+
+.card .card-header {
+  font-weight: 500;
+}
+.card-header:first-child {
+  border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+  padding: 1rem 1.35rem;
+  margin-bottom: 0;
+  background-color: rgba(33, 40, 50, 0.03);
+  border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+.form-control, .dataTable-input,select,textarea {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #060607;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #000000;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; top:9%;
+  border-radius: 0.35rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.nav-borders .nav-link.active {
+  color: #0061f2;
+  border-bottom-color: #0061f2;
+}
+.nav-borders .nav-link {
+  color: #69707a;
+  border-bottom-width: 0.125rem;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+button{
+  width: 50%;
+  height: 40px;
+  border-radius: 40px;
+  background: #f3ac2c;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 400;
+  color: whitesmoke;}
+.form-group {
+
+  width: 30%;
+  display: inline-block; /* or inline */
+  width: 45%; /* adjust the width as needed */
+  margin-right: 5%; /* add some margin between the inputs */
+}.form-group:last-child {
+   margin-right: 0; /* remove the margin from the last input */
+ }

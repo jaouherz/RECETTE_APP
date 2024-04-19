@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+<div class="col-xl-8">
+  <app-sidebar></app-sidebar>
+
+  <div class="card mb-4">
+    <div class="card-header">Mettre à jour le projet {{project.name}}</div>
+    <div class="card-body">
+      <form #updateprojform="ngForm" (ngSubmit)="onSubmit(updateprojform)" ngForm="updateform">
+        <div class="form-group">
+          <label>Nom du projet<span style="color: red">*</span></label>
+          <input type="text" ngModel class="form-control" placeholder=" name"name="name" [(ngModel)]="project.name">
+
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" ngModel class="form-control" placeholder="description" name="description" [(ngModel)]="project.description">
+        </div>
+
+
+        <div class="form-group">
+          <label>URL du version</label>
+          <input type="text" ngModel class="form-control" placeholder="url" name="url"[(ngModel)]="project.url">
+        </div>
+        <div class="form-group">
+          <label>Domaine<span style="color: red">*</span></label>
+          <select class="form-control" name="domaine" [(ngModel)]="selecteddomain">
+            <option value="" selected disabled>--Choisir un Domaine--</option>
+            <option *ngFor="let user of domaines" [value]="user.name">{{user.name}} </option>
+          </select>
+        </div>
+        <hr>
+        <div class="form-group">
+          <label>DPT du version</label>
+          <a type="text" ngModel class="form-control" placeholder="tu" style="border:0px;" name="dpt"><strong >Fichier actuel :</strong> {{project.dpt_file_name}}</a>
+
+          <input type="file" ngModel class="form-control" placeholder="choisir un fichier" name="dpt_id" (change)="onFileSelected($event)" [(ngModel)]="project.dpt_file_name">
+        </div>
+        <div class="form-group">
+          <label>Le Test unitaire du version </label>
+          <a type="text" ngModel class="form-control" placeholder="tu" style="border:0px;" name="tu"><strong>Fichier actuel :</strong> {{project.tu_file_name}}</a>
+
+          <input type="file" ngModel class="form-control" placeholder="T_U" name="T_U"(change)="onFileSelected2($event)"[(ngModel)]="project.tu_file_name">
+        </div>
+        <hr>
+        <div class="form-group">
+          <label>Intervention nécessaire</label>
+          <input type="checkbox" [(ngModel)]="project2.intervention" name="intervention">
+        </div>
+
+        <div class="form-group">
+          <label>Environnement prêt</label>
+          <input type="checkbox" [(ngModel)]="project2.envi" name="envi">
+        </div>   <div *ngIf="isLoading">
+        <i class="fa fa-spinner fa-spin"></i> Chargement...
+      </div>
+        <button type="submit" class="btn btn-success"  >Enregistrer</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<div class="col-xl-8">
+  <app-sidebar></app-sidebar>
+
+  <div class="card mb-4">
+    <div class="card-header">FEEDBACK </div>
+    <div class="card-body">
+
+
+
+
+
+      <form #feedback="ngForm" (ngSubmit)="feedbackfn(feedback)" ngForm="interventionform">
+
+
+
+        <div class="form-group">
+          <label for="msg">Statut</label>
+          <select  class="form-control" id="msg" ngModel name="statut" >
+            <option value="">--selectioner un etat--</option>
+            <option value="OK">OK</option>
+            <option value="KO">KO</option>
+          </select>
+        </div>
+        <div  class="form-group">
+          <label for="desc">description</label>
+          <select  class="form-control" id="desc" ngModel name="description" >
+            <option value="">--choisir une motif--</option>
+            <option value="Absence du vav metier">Absence du vis à vis  metier</option>
+           <option value="Probléme technique de la version deployée">Probléme technique de la version deployée</option>
+            <option value="Probléme d'accès au serveur">Probléme technique de la version deployée</option>
+
+            <option value="autre">autre cause</option>
+          </select>
+        </div>
+        <div  class="form-group">
+
+          <label >
+          <input type="checkbox"  id="finale"  ngModel name="finale" >
+          Marquer la séance actuelle comme étant la dernière du projet.</label>
+
+
+        </div><hr>
+        <div *ngIf="isLoading">
+        <i class="fa fa-spinner fa-spin"></i> Chargement...
+      </div>
+        <button type="submit" class="btn btn-success">Envoyer le feedback</button>
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="col-xl-8">
+  <app-sidebar></app-sidebar>
+
+  <div class="card mb-4">
+    <div class="card-header">Faire une intervention pour le projet   </div>
+    <div class="card-body">
+
+
+      <div class="form-groupa">
+        <h6 style="color:grey">Tapez le nom du projet</h6>
+        <label>Projet :<span style="color: red">*</span></label>
+        <input type="text" [(ngModel)]="selectedProject" (ngModelChange)="onProjectSelected()" (keyup)="search()">        <ul *ngIf="showProjectList" class="project-list">
+          <li *ngFor="let p of filteredProjects" (click)="selectProject(p.id,p.name)">
+            {{ p.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-groupa">
+        <label>Intervenant<span style="color: red">*</span></label>
+        <div>
+          <label *ngFor="let user of intervenant" style=" display: block;">
+            <input type="checkbox" name="vav_orga" [checked]="selectedintervenat.includes(user.email)" (change)="onCheckboxChange(user.email)">   {{user.firstname}} {{user.lastname}}
+
+          </label>
+        </div>
+      </div>
+
+      <form #interventionform="ngForm" (ngSubmit)="intervention1(interventionform)" ngForm="interventionform">
+
+
+
+        <div class="form-group">
+          <label for="msg">Message :</label>
+          <textarea class="form-control" id="msg" ngModel name="msg" rows="3"></textarea>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-success">Envoyer l'intervention</button>
+      </form>
+    </div>
+  </div>
+</div>

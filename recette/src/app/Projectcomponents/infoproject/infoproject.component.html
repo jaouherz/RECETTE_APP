@@ -1,0 +1,62 @@
+<app-header></app-header>
+
+<div class="col-xl-8">
+  <app-sidebar></app-sidebar>
+
+  <div class="card mb-4 " >
+    <div class="card-header"><i class="fa fa-info-circle" aria-hidden="true" style="font-size: 30px;"></i>
+      Informations sur le projet  {{ project.name}}  </div>
+    <div class="card-body">
+      <form ngForm="card" style="margin-left: 37%">
+        <img class="img-account-profile " src="assets/5956592.png" alt="" >
+
+
+      </form>
+      <hr>
+      <form #updateprojform="ngForm" ngForm="updateform">
+        <div class="form-group">
+          <label><strong>Nom du projet:  </strong> </label>
+
+          <a     >  {{project.name}}
+          </a>
+        </div>
+        <div class="form-group">
+          <label><strong>Description:   </strong>  </label>
+          <a     >  {{project.description}}</a>
+        </div>
+
+
+        <div class="form-group">
+          <label><strong>URL du version</strong></label>
+          <a     >  {{project.url}}</a>
+        </div>
+
+        <div class="form-group">
+          <label><strong>Etat du projet</strong></label>
+
+          <a     >  <ng-container *ngIf="project2.etat === 'en attente de planification'; else clock">
+            <i class="fa fa-calendar-alt"></i>
+          </ng-container>
+            <ng-template #clock>
+              <i class="fa fa-clock"></i>
+            </ng-template>
+            {{ project2.etat }}</a>
+        </div>
+        <hr>
+        <div class="form-group">
+          <label><strong>DPT du version</strong></label>
+          <a     >  {{project.dpt_file_name}}</a>
+          <button class="btn btn-link download-link" (click)="downloadfile(project2.id,'dpt')"><i class="fa fa-download"></i> Télecharger</button>
+        </div>
+        <div class="form-group">
+          <label><strong>Le Test unitaire du version</strong> </label>
+          <a     >  {{project.tu_file_name}}</a>
+          <button class="btn btn-link download-link" (click)="downloadfile(project2.id,'tu')"><i class="fa fa-download"></i> Télecharger</button>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+

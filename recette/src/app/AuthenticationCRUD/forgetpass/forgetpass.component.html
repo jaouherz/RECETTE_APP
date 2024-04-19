@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<section>
+  <div class="form-box">
+    <div class="form-value">
+      <form #forgetpassForm="ngForm"(ngSubmit)="forgetpass(forgetpassForm)">
+        <div class="img"><img src="assets/LOGO-ATTIJARI-NEW.gif" width="150px"> </div>
+        <h2>RECETTE-APP</h2>
+
+        <h5> Entrez votre e-mail pour recevoir <br>un e-mail de réinitialisation</h5>
+        <h6 *ngIf="showalert" style="color: red ;"><p style="margin-right: 50px;"> Vérifiez votre e-mail  </p> <p>Si vous rencontrez un problème, contactez l'administrateur de sécurité </p></h6>
+
+        <div class="inputbox">
+
+
+          <input type="email"
+                 ngModel
+                 name="email"
+                 id="email" required>
+          <label  place>E-mail</label>
+          <div class="icon"> <img src="assets/mail.png" width="70px" alt="Input Icon"> </div>
+        </div>
+
+
+
+
+
+        <button type="submit">Confirmer</button>
+        <div class="forget">
+        <a routerLink="/login">Retour à la page de connexion</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

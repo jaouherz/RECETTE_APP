@@ -1,0 +1,45 @@
+<app-header></app-header>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<button type="button" class="btn btn-dark "  style="width: 200px; height: 50px; margin-left: 70px; margin-top:20px; margin-bottom: 0px;"
+        routerLink="/register">Retour</button>
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
+      <form #registerform="ngForm" (ngSubmit)="verifi(registerform)">
+        <div class="form-group">
+          <label>Nom<span style="color: red">*</span></label>
+          <input type="text"  class="form-control" placeholder="Nom" ngModel name="firstname" >
+
+
+        </div>
+
+        <div class="form-group">
+          <label>Prénom<span style="color: red">*</span></label>
+          <input type="text" ngModel class="form-control" placeholder="Prénom" name="lastname">
+        </div>
+        <div class="form-group">
+          <label>E-mail<span style="color: red">*</span></label>
+          <input type="text" ngModel class="form-control" placeholder="Adresse email"name="email">
+        </div>
+        <div class="form-group">
+          <label>Role<span style="color: red">*</span></label>
+          <select name="role" ngModel class="form-control" >
+            <option value="" selected>--Veuillez choisir un rôle--</option>
+            <option value="recette">recette</option>
+            <option value="orga">orga</option>
+           <option value="adminfn">administrateur fn</option>
+
+          </select>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-success"  style="margin-bottom: 200px;">Ajouter</button>
+
+
+      </form>
+    </div>
+  </div>
+</div>

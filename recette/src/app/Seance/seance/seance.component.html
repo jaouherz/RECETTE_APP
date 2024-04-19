@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<div style="width: 90%; height: 30%;margin-left: 7%;margin-top: 0%">
+  <app-sidebar></app-sidebar>
+  <h3 >  <strong><i class="fa fa-list-check "></i> Les séances de cette semaine</strong></h3>
+  <h3 style="margin-left: 80.5%;margin-top:-3.5%"><strong>{{currentDate}}</strong></h3>
+  <daypilot-calendar
+
+    [config]="config" [events]="events" class="small-calendar"> </daypilot-calendar></div>
+
+
+

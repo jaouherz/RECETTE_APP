@@ -1,0 +1,86 @@
+body{margin-top:20px;
+  background-color:#f2f6fc;
+  color:#69707a;
+}
+.img-account-profile {
+  height: 10rem;
+}
+h3{
+
+font-size: 20px;
+font-family: "Arial Rounded MT Bold";
+
+  position: center;
+}
+.card {
+  border: 0px;
+
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+  margin-bottom: 30px;
+  width:80%;
+  margin-left:350px;
+  margin-top:40px;
+
+}
+.card .card-header {
+  font-weight: 800;
+  font-size: 30px;
+}
+.card-header:first-child {
+  border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+  padding: 1rem 1.35rem;
+  margin-bottom: 0;
+  background-color: rgba(33, 40, 50, 0.03);
+
+}
+.form-control, .dataTable-input,a {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #060607;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 0px solid #000000;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.35rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.col-xl-8[_ngcontent-lym-c51]{
+  width:70%;
+  margin-right:100px;
+}
+.col-xl-8{
+  max-width: 70%;
+}
+.form-group {
+
+  width: 30%;
+  display: inline-block; /* or inline */
+  width: 45%; /* adjust the width as needed */
+  margin-right: 5%; /* add some margin between the inputs */
+}.form-group:last-child {
+   margin-right: 0; /* remove the margin from the last input */
+ }
+.download-link {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-decoration: underline;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.download-link:hover {
+  color: blue;
+  text-decoration: underline;
+}

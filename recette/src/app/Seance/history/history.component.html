@@ -1,0 +1,56 @@
+<app-header></app-header>
+
+<div class="col-xl-8">
+  <app-sidebar></app-sidebar>
+
+  <div class="card mb-4">
+    <div class="card-header">Historique des projets  </div>
+    <div class="card-body">
+
+
+      <div class="form-groupa">
+        <h6 style="color:grey">Tapez le nom du projet</h6>
+        <label>Projet :</label>
+        <input type="text" [(ngModel)]="selectedProject" (ngModelChange)="onProjectSelected()" (keyup)="search()">        <ul *ngIf="showProjectList" class="project-list">
+        <li *ngFor="let p of filteredProjects" (click)="selectProject(p.id,p.name)">
+          {{ p.name }}
+        </li>
+      </ul>
+      </div>
+<div class="form-groupa">
+      <div class="container" id="main-container" style="margin-right: 5%;">
+        <div class="row" style="margin-top: -7%">
+          <div class="mt-5">
+
+            <table class="table table-hover smaller-font">
+              <thead>
+              <tr>
+                <th>Nom operation  </th>
+                <th>Date operation </th>
+
+
+
+              </tr>
+              </thead>
+              <tbody class="tbody">
+              <tr *ngFor="let domaine of history">
+                <td>{{domaine.nomoperation}}</td><td>{{domaine.dateopeartion}}</td>
+
+
+
+
+
+
+
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+</div>

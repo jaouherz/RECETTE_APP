@@ -1,0 +1,85 @@
+<app-header></app-header>
+<div class="d-flex align-items-center mb-4" style="position: fixed; top: 100px; right: -160px; width: 30%;">
+  <i class="bx bx-search me-2"></i>
+<app-sidebar></app-sidebar>
+</div>
+
+<div class="d-flex align-items-center mb-4" style="width: 30%; right: 50%; top: 20px;">
+  <i class="bx bx-search" style="margin-right: 10px;"></i>
+  <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel name="key" id="searchName" class="form-control mr-sm-2" style="width: 50%; max-width: 500px; margin-right: -900px; margin-top: 9%;" placeholder="Search Projects..." required>
+</div>
+
+<div class="container" id="main-container" style="margin-right: 5%;">
+
+  <div class="row" style="margin-top: -7%">
+    <div class="mt-5"> <a *ngIf="!isrecette"style="font-size: 20px;bottom: 10%;font-family : Verdana, Geneva, sans-serif;"><i class="fa fa-table-list"></i> <strong>  Mes projets :</strong></a><br>
+      <a *ngIf="isrecette"style="font-size: 20px;bottom: 10%;font-family : Verdana, Geneva, sans-serif;"> <i class="fa fa-table-list"></i> <strong> Liste des projets :</strong></a><br><br>
+      <div *ngIf="isLoading">
+        <i class="fa fa-spinner fa-spin"></i> Loading...
+      </div>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>NOM </th>
+
+          <th>DOMAINE</th>
+          <th>ETAT</th>
+          <th>DATE D'AJOUT</th>
+<th></th><th></th><th></th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr *ngFor="let project of projects" [ngClass]="{'heart-beat': project.etat === 'en attente de planification'&& !isrecette||!isrecette&&project.etat==='En attente de planification d\'une autre séance'}">
+          <td>{{project.name}}</td>
+
+          <td>{{project.domaine}}</td>
+          <td>
+            <ng-container [ngSwitch]="project.etat">
+              <i *ngSwitchCase="'en attente de planification'" class="fa fa-calendar-o"></i>
+              <i *ngSwitchCase="'En attente de planification d\'une autre séance'" class="fa fa-calendar-o"></i>
+              <i *ngSwitchCase="'Recette  planifié'" class="fa fa-calendar-alt"></i>
+              <i *ngSwitchDefault class="fa fa-clock"></i>
+            </ng-container>
+            {{ project.etat }}
+          </td>
+
+
+
+
+
+
+
+          <td>{{project.date}} à {{project.time}}</td>
+          <td>
+
+
+            <a (click)="infoproject(project.id)" class="btn btn-light " data-placement="top" data-original-title="Edit"><i class="fa fa-info-circle " style="color:#f3ac2c"></i> </a>
+          </td> <td>
+
+          <a *ngIf="!isrecette&&project.etat=='en attente de planification'||!isrecette&&project.etat=='En attente de planification d\'une autre séance'" (click)="planifier(project.id)" class="btn btn " data-placement="top" data-original-title="Edit"data-placement="top"
+             data-original-title="Edit"
+             title="planifier votre séance">
+          <i class="fa fa-calendar-plus   heart-beat2" style="color:#229a11; font-size: 20px"></i> </a>
+
+<a *ngIf="isrecette" (click)="updateEmployee(project.id)" class="btn btn-light " data-placement="top" data-original-title="Edit"><i class="fa fa-pencil " style="color:#f3ac2c"></i> </a>
+          </td>
+
+          <td>
+
+
+            <a *ngIf="isrecette" (click)="deleteproject(project.id)" class="btn btn-danger " data-placement="top" data-original-title="delete"><i class="fa fa-trash-o" style="color: #e2e2e2"></i> </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Notification for no employees -->
+<div *ngIf="projects?.length == 0 && !isLoading " class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO projects!</h4>
+    <p>No projects were found.</p>
+  </div>
+</div>

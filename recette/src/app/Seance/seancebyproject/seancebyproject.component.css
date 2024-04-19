@@ -1,0 +1,44 @@
+.d-flex {
+  justify-content: flex-end;
+}
+th {
+  border-top: 1px solid rgba(0, 0, 0, 0.22);
+}
+.heart-beat {
+  animation: heartbeat 2s 1;
+}
+.heart-beat2 {
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat  {
+
+  5% {
+    transform: scale(1.1);
+  }
+
+
+
+}
+@keyframes heartbeat2  {
+
+  25% {
+    transform: scale(1.1);
+  }
+  90% {
+    transform: scale(1.1);
+  }
+
+
+}
+.seance-row {
+  margin-left: 500px; /* Change the value as needed */
+}
+.red-row {
+  background-color: rgba(255, 38, 0, 0.18);
+
+}
+.green-row{
+  background-color: rgba(34, 154, 17, 0.14);
+
+}

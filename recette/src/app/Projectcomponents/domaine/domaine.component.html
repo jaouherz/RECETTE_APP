@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<div class="col-xl-8">
+  <app-sidebar></app-sidebar>
+
+  <div class="card mb-4">
+    <div class="card-header">Ajouter un domaine</div>
+    <div class="card-body">
+      <form #domainForm="ngForm" (ngSubmit)="adddomaine(domainForm)" ngForm="projectform">
+        <div class="form-group">
+          <label>Nom du Domaine<span style="color: red">*</span></label>
+          <input type="text" ngModel class="form-control" placeholder=" Choisir un nom unique"name="name" >
+
+        </div>
+        <div class="form-group">
+          <label>Vis à vis orga<span style="color: red">*</span></label>
+          <select class="form-control" name="vav_orga" [(ngModel)]="selectedvavorga">
+            <option value="" selected disabled>--Choisir un vis a vis orga--</option>
+            <option *ngFor="let user of vav_orga1" [value]="user.email">{{user.firstname}} {{user.lastname}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Vis à vis metier<span style="color: red">*</span></label>
+          <select class="form-control" name="vav_metier" [(ngModel)]="selectedvavmetier">
+            <option value="" selected disabled>--Choisir un vis a vis metier--</option>
+            <option *ngFor="let user of vav_metier1" [value]="user.email">{{user.firstname}} {{user.lastname}} ({{user.nbabs}})</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Vis à vis étude<span style="color: red">*</span></label>
+          <select class="form-control" name="vav_etude" [(ngModel)]="selectedvavetude">
+            <option value="" selected disabled>--Choisir un vis a vis étude--</option>
+            <option *ngFor="let user of vav_etude1" [value]="user.email">{{user.firstname}} {{user.lastname}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Responsable étude<span style="color: red">*</span></label>
+          <select class="form-control" name="respEtude" [(ngModel)]="selectedetude">
+            <option value="" selected disabled>--Choisir un responsable étude--</option>
+            <option *ngFor="let user of respEtude1" [value]="user.email">{{user.firstname}} {{user.lastname}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Responsable metier<span style="color: red">*</span></label>
+          <select class="form-control" name="respmetier" [(ngModel)]="selectedmetier">
+            <option value="" selected disabled>--Choisir un responsable metier--</option>
+            <option *ngFor="let user of respmetier1" [value]="user.email">{{user.firstname}} {{user.lastname}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Responsable orga<span style="color: red">*</span></label>
+          <select class="form-control" name="resorga" [(ngModel)]="selectedorga">
+            <option value="" selected disabled>--Choisir un responsable orga--</option>
+            <option *ngFor="let user of resorga1" [value]="user.email">{{user.firstname}} {{user.lastname}}</option>
+          </select>
+        </div>
+
+
+        <div *ngIf="isLoading">
+          <i class="fa fa-spinner fa-spin"></i> Loading...
+        </div>
+
+        <button type="submit" class="btn btn-success"  >Ajouter le Domaine</button>
+      </form>
+    </div>
+  </div>
+</div>
+

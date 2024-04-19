@@ -1,0 +1,120 @@
+<html>
+<head>
+
+</head>
+<body><div class="area"></div><nav class="main-menu" >
+  <ul>
+    <li *ngIf="isrecette"routerLink="/dashboard">
+<a>
+        <i class="fa fa-line-chart fa-2x"></i>
+        <span class="nav-text">
+                          Consulter le Tableau de bord
+                        </span>
+      </a>
+
+    </li>
+    <li class="has-subnav" *ngIf="isrecette"routerLink="/makeint">
+      <a>
+        <i class="fa fa-handshake-angle fa-2x" ></i>
+        <span class="nav-text">
+                            Faire une intervention
+                        </span>
+
+      </a>
+    </li>
+    <li class="has-subnav" *ngIf="isrecette"routerLink="/Seance">
+      <a>
+        <i class="fa fa-calendar fa-2x"></i>
+        <span class="nav-text">
+                            Consulter la calendrier
+                        </span>
+      </a>
+
+    </li>
+
+    <li class="has-subnav" *ngIf="!isrecette"routerLink="/Seance">
+      <a>
+        <i class="fa fa-calendar-days fa-2x"></i>
+        <span class="nav-text">
+                            Consulter mes séances
+                        </span>
+      </a>
+
+    <li class="has-subnav" *ngIf="!isrecette" routerLink="/listseance">
+      <a>
+        <i class="fa fa-user-clock fa-2x"><span class="notification"*ngIf="notif !== 0">{{ notif }}</span></i>
+        <span class="nav-text">Gérer mes séances</span>
+
+      </a>
+    </li>
+
+    <li *ngIf="!isrecette"class="has-subnav" routerLink="/list">
+      <a>
+        <i class="fa fa-list fa-2x"  ></i>
+        <span class="nav-text" >
+                            Mes Projets
+                        </span>
+
+      </a>
+    </li>
+    <li *ngIf="isrecette" class="has-subnav" routerLink="/seancebyproject">
+      <a>
+        <i class="fa fa-list-ul fa-2x"  ><span class="notification"*ngIf="notif2 !== 0&&!issuperadm">{{ notif2 }}</span></i>
+        <span class="nav-text" >
+                             Projets et Séances
+                        </span>
+
+      </a>
+    </li>
+
+    <li *ngIf="isrecette" class="has-subnav" routerLink="/project">
+      <a>
+        <i class="fa fa-plus fa-2x"></i>
+        <span class="nav-text"  >
+                            Ajouter un projet
+                        </span>
+      </a>
+    </li>
+
+
+    <li *ngIf="isrecette" class="has-subnav" routerLink="/listdomaine">
+      <a>
+        <i class="fa fa-people-group fa-2x"></i>
+        <span class="nav-text">
+                            Liste des Domaines
+                        </span>
+      </a>
+    </li>
+    <li *ngIf="isrecette" class="has-subnav" routerLink="/domaine">
+      <a>
+        <i class="fa fa-plus-circle fa-2x"></i>
+        <span class="nav-text">
+                            Ajouter un domaine
+                        </span>
+
+      </a>
+    </li>
+    <li *ngIf="issuperadm" class="has-subnav" routerLink="/listuser2">
+      <a>
+        <i class="fa fa-user-plus fa-2x"  ></i>
+        <span class="nav-text" >
+                             Gérer les profiles secondaire et les itervenants
+                        </span>
+
+      </a>
+    </li>
+    <li *ngIf="issuperadm" class="has-subnav" routerLink="/History">
+      <a>
+        <i class="fa fa-history fa-2x"  ></i>
+        <span class="nav-text" >
+                             Historique des projects
+                        </span>
+
+      </a>
+    </li>
+  </ul>
+
+
+</nav>
+</body>
+</html>

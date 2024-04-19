@@ -1,0 +1,34 @@
+<div class="aze">
+<div class="card mb-4">
+
+  <h4 style="font-family: Bahnschrift;">Etat des projets par année</h4>
+
+  <canvas  id="MyChart" ></canvas>
+
+  <select class="form-control" id="po" #yearselect [(ngModel)]="selectedYear" (ngModelChange)="onYearChange()"name="year" rows="3" style="width: 23%;margin-left: 20px">
+    <option value="">year</option>
+    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+  </select>
+</div>
+
+<div class="card mb-4" style="margin-left: 5%">
+   <h4 style="font-family: Bahnschrift;font-size: 14px">Etat des séances par année et mois</h4>
+
+
+
+  <canvas  id="MyChart2" ></canvas>
+  <select class="form-control" id="po7" #yearselect [(ngModel)]="selectedYear" (ngModelChange)="onYearChange()"name="year" rows="3" style="width: 23%;margin-left: 20px">
+    <option value="">year</option>
+    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+  </select>
+</div>
+  <div class="card mb-4" style="margin-left: 3%;width: 40%;height: 50%">
+    <h4 style="font-family: Bahnschrift;font-size: 14px">Etat des séances par année et mois</h4>
+
+    <canvas  id="MyChart3"  ></canvas>
+    <select class="form-control" id="po8" #yearselect [(ngModel)]="selectedYear" (ngModelChange)="onYearChange()"name="year" rows="3" style="width: 23%;margin-left: 20px">
+      <option value="">year</option>
+      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+    </select>
+  </div>
+</div>

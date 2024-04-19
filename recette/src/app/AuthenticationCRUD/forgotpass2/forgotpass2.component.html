@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<section>
+  <div class="form-box">
+    <div class="form-value">
+     <form  #forgetpass2Form="ngForm"(ngSubmit)="forgetpass2(forgetpass2Form)">
+        <div class="img"><img src="assets/LOGO-ATTIJARI-NEW.gif" width="150px"> </div>
+        <h2>RECETTE-APP</h2>
+
+        <h5> Choisir un nouveau mot de passe</h5>
+
+       <div class="inputbox">
+
+         <input type="password"
+                ngModel
+                name="newpassword"
+
+                id="password2" required>
+         <label >Nouveau mot de passe</label>
+         <div class="icon"> <img src="assets/password.png" width="60px" alt="Input Icon"> </div>
+       </div>
+       <div class="inputbox">
+
+         <input type="password"
+                ngModel
+                name="confirmpassword"
+
+                id="password1" required>
+         <label >Confirmer mot de passe</label>
+         <div class="icon"> <img src="assets/password.png" width="60px" alt="Input Icon"> </div>
+       </div>
+
+
+
+
+        <button type="submit">Confirmer</button>
+        <div class="forget">
+          <a routerLink="/login">Retour à la page de connexion</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
+
